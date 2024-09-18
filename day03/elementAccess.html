@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>accessing html elements </title>
+</head>
+<body>
+    <div id="firstdiv" class="firstdiv">
+     parshant <s>bhusal</s>
+    </div>
+    <div id="seconddiv" class="seconddiv">
+        parshant bhusal
+    </div>
+    <input id="thirdinput" class="thirdinput" type="text" value="hey"> 
+    <button  onclick="changeValue()"> click me </button>
+</body>
+<script>    
+    function changeValue(){
+
+        document.getElementById("firstdiv").innerHTML="parshant <b>bhusal</b>";
+        document.getElementById("seconddiv").innerHTML=" ram khatri"
+        document.getElementById("thirdinput").value="bye"
+    }
+    
+</script>
+</html>

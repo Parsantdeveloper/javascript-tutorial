@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz</h1>
+        <div id="quiz">
+            <p id="question">What is 2 + 2?</p>
+            <button onclick="checkAnswer(4)" >4</button>
+            <button onclick="checkAnswer(5)" >5</button>
+        </div>
+        <p id="result"></p>
+    </div>
+
+   <script>
+    function checkAnswer(value){
+    if(value==4){
+      let x =  document.getElementById("result")
+        x.innerText="this is correct answer"
+        x.style.color ="green"
+   
+    }
+    else{
+          document.getElementById("result").innerText = "this is incorrect answer"
+          document.getElementById("result").style.color="red"
+    }
+    }
+   </script>
+</body>
+</html>

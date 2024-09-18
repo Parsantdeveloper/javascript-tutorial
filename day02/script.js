@@ -56,6 +56,9 @@
 
 
 function printName(){
-    console.log("this function prints name");
+console.log("this function prints name");
 }
 printName();
+
+
+
