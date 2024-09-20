@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+  
+</head>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: ;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: darkcyan;
+            color: white;
+            padding: 10px 15px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2c3e50;
+        }
+        .output,
+        .details,
+        .update {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+        .output span,
+        .details span {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #35495e;
+        }
+        .update input[type="text"],
+        .update input[type="number"] {
+            width: 48%;
+            display: inline-block;
+            margin-right: 2%;
+        }
+        .remove {
+            background-color: #e74c3c;
+            border-color: #c0392b;
+        }
+        .remove:hover {
+            background-color: #c0392b;
+        }
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #35495e;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Student Management System</h1>
+    </div>
+
+    <div>
+        <h1 class="section-title">Add New Student</h1>
+        <form>
+            <label for="name">Name</label>
+            <input id="name" type="text">
+            <label for="id">ID</label>
+            <input id="id" type="text">
+            <button type="button" onclick="newStudent(event)">Add Student</button>
+        </form>
+    </div>
+
+    <div id="showOutput" class="output"></div>
+
+    <div>
+        <h1 class="section-title">Add Marks to a Student</h1>
+        <form>
+            <label for="studentId">Student ID</label>
+            <input id="studentId" type="text">
+            <label for="subjectname">Subject Name</label>
+            <input id="subjectname" type="text">
+            <label for="marks">Marks</label>
+            <input id="marks" type="number">
+            <button type="button" onclick="addMarks(event)">Add Marks</button>
+        </form>
+    </div>
+
+    <div>
+        <h1 class="section-title">Show Student Data</h1>
+        <form>
+            <input id="idOutput" type="number" placeholder="Enter Student ID">
+            <button type="button" onclick="showDetail(event)">Show Details</button>
+        </form>
+        <div id="studentdetials" class="details"></div>
+    </div>
+
+    <div>
+        <h1 class="section-title">Update Details</h1>
+        <form>
+            <label for="stid">Student ID</label>
+            <input id="stid" type="number">
+            <button type="button" onclick="updateDetails(event)">Get Details</button>
+        </form>
+        <div id="update" class="update"></div>
+        <button type="button" onclick="update(event)">Update</button>
+    </div>
+
+    <div>
+        <h1 class="section-title">Remove a Student</h1>
+        <form>
+            <input id="removeId" type="number" placeholder="Enter Student ID">
+            <button type="button" class="remove" onclick="removeStudent(event)">Remove</button>
+        </form>
+    </div>
+</div>
+</body>
+
+<script>
+    const arr=[
+       
+    ];
+
+function newStudent(event){
+event.preventDefault();
+   const studentname = document.getElementById("name").value;
+   const studentid = document.getElementById("id").value;
+    arr.push({student:studentname,id:studentid , grades:[]});
+    console.log(arr);
+}
+
+function addMarks(event){
+    event.preventDefault();
+    const studentid=document.getElementById("studentId").value;
+    const subjectname = document.getElementById("subjectname").value;
+    const markscount = document.getElementById("marks").value;
+    console.log(studentId);
+    // const student=arr.find((data)=>data.id==studentid);
+     const grades=arr.find(function(data){return data.id==studentid;}).grades;
+    console.log(markscount);
+     grades.push([{subject:subjectname},{marks:markscount}]);
+     console.log(arr);
+    console.log(arr)
+ 
+}
+function showDetail(event){
+    event.preventDefault();
+  const id=document.getElementById("idOutput").value;
+  console.log(id);
+  const student =arr.find(function(data){return data.id==id});
+  console.log(student);
+  document.getElementById("studentdetials").innerHTML=`
+  <h1> Detail of ${student.name}</h1> ${student.grades.map((data)=>(`<div> <b>${data.subjectname} </b>: <span>${data.marks} </span> </div>`))}
+  `
+
+}
+
+</script>
+
+</html>
+    
